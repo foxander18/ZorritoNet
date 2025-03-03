@@ -17,6 +17,10 @@ jobs:
         with:
           channel: stable
 
+      - name: Create new Flutter project
+        run: |
+          flutter create -t app .  # Crea un nuevo proyecto en la carpeta actual
+
       - name: Install dependencies
         run: flutter pub get
 
