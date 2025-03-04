@@ -64,8 +64,9 @@ class _NetworkScannerScreenState extends State<NetworkScannerScreen> {
 
   Future<bool> _ping(String ip) async {
     try {
-      final result = await InternetAddress(ip).lookup();
-      return result.isNotEmpty;
+      final socket = await Socket.connect(ip, 80, timeout: Duration(seconds: 1));
+      await socket.close();
+      return true;
     } catch (e) {
       return false;
     }
